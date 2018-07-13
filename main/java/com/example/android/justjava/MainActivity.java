@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     double coffeePrize;
 
     public MainActivity(){
-        number=1;
+        number=0;
         coffeePrize=2.99;
     }
 
@@ -22,15 +22,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void submitOrder(View view) {
+    public void addOrder(View view) {
         number++;
         display(number);
         displayPrize();
     }
 
+    public void removeOrder(View view){
+        number--;
+        display(number);
+        displayPrize();
+    }
+
+    public void submitOrder(View view){
+
+    }
+
     public void displayPrize(){
         TextView prizeTextView = (TextView) findViewById(R.id.prize_text_view);
-        prizeTextView.setText("$" + number*coffeePrize);
+        String s = String.format("%.2f", number*coffeePrize);
+        prizeTextView.setText("$" + s);
     }
 
     private void display(int number) {
